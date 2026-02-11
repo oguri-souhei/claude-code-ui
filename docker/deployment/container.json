@@ -1,0 +1,26 @@
+{
+  "serviceName": "claude-code-ui",
+  "containers": {
+    "claude-code-ui": {
+      "image": ":claude-code-ui.latest",
+      "environment": {
+        "ANTHROPIC_API_KEY": "<API_KEY>"
+      },
+      "ports": {
+        "3001": "HTTP"
+      }
+    }
+  },
+  "publicEndpoint": {
+    "containerName": "claude-code-ui",
+    "containerPort": 3001,
+    "healthCheck": {
+      "healthyThreshold": 2,
+      "unhealthyThreshold": 2,
+      "timeoutSeconds": 5,
+      "intervalSeconds": 30,
+      "path": "/",
+      "successCodes": "200-499"
+    }
+  }
+}

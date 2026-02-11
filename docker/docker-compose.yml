@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  claude-code-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: claude-code-ui
+    ports:
+      - "3001:3001"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./workspace:/workspace
+      - claude-config:/root/.claude
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+
+volumes:
+  claude-config:
